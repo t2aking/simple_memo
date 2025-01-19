@@ -64,3 +64,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Bulma CSS Framework Integration
+
+This project now includes the Bulma CSS framework for styling. Bulma is a modern CSS framework based on Flexbox. It is simple to use and provides a clean and responsive design.
+
+To learn more about Bulma, visit the [official Bulma documentation](https://bulma.io/documentation/).
