@@ -32,7 +32,7 @@ class MemoController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('memos.index');
     }
 
     /**
@@ -58,7 +58,7 @@ class MemoController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('memos.index');
     }
 
     /**
