@@ -60,4 +60,14 @@ class MemoController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    /**
+     * Display a list of registered memos.
+     */
+    public function index()
+    {
+        $memos = Memo::where('user_id', Auth::id())->get();
+
+        return view('memos.index', compact('memos'));
+    }
 }
