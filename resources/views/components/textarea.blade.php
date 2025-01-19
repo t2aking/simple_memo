@@ -1,0 +1,1 @@
+<textarea {{ $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm']) }} @if($attributes->has('required')) required @endif @if($attributes->has('autofocus')) autofocus @endif>{{ $slot }}</textarea>
