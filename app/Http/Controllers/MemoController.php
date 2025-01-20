@@ -66,7 +66,7 @@ class MemoController extends Controller
      */
     public function index()
     {
-        $memos = Memo::where('user_id', Auth::id())->get();
+        $memos = Memo::with('user')->where('user_id', Auth::id())->get();
 
         return view('memos.index', compact('memos'));
     }

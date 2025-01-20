@@ -10,15 +10,30 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('memos.create') }}" class="text-blue-500">{{ __('Create New Memo') }}</a>
-                    <ul class="mt-4">
-                        @foreach ($memos as $memo)
-                            <li class="mb-4">
-                                <h3 class="text-lg font-semibold">{{ $memo->title }}</h3>
-                                <p>{{ $memo->content }}</p>
-                                <a href="{{ route('memos.edit', $memo->id) }}" class="text-blue-500">{{ __('Edit') }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <table class="mt-4 w-full">
+                        <thead>
+                            <tr>
+                                <th class="border px-4 py-2">ID</th>
+                                <th class="border px-4 py-2">Creator</th>
+                                <th class="border px-4 py-2">Title</th>
+                                <th class="border px-4 py-2">Content</th>
+                                <th class="border px-4 py-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($memos as $memo)
+                                <tr>
+                                    <td class="border px-4 py-2">{{ $memo->id }}</td>
+                                    <td class="border px-4 py-2">{{ $memo->user->name }}</td>
+                                    <td class="border px-4 py-2">{{ $memo->title }}</td>
+                                    <td class="border px-4 py-2">{{ Str::limit($memo->content, 10, '...') }}</td>
+                                    <td class="border px-4 py-2">
+                                        <a href="{{ route('memos.edit', $memo->id) }}" class="text-blue-500">{{ __('Edit') }}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
