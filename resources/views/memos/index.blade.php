@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('memos.create') }}" class="text-blue-500">{{ __('Create New Memo') }}</a>
                     <table class="mt-4 w-full">
-                        <thead>
+                        <thead class="bg-gray-200">
                             <tr>
                                 <th class="border px-4 py-2">ID</th>
                                 <th class="border px-4 py-2">Creator</th>
