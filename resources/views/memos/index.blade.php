@@ -15,6 +15,7 @@
                             <li class="mb-4">
                                 <h3 class="text-lg font-semibold">{{ $memo->title }}</h3>
                                 <p>{{ $memo->content }}</p>
+                                <a href="{{ route('memos.edit', $memo->id) }}" class="text-blue-500">{{ __('Edit') }}</a>
                             </li>
                         @endforeach
                     </ul>
