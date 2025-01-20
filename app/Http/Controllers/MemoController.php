@@ -70,4 +70,18 @@ class MemoController extends Controller
 
         return view('memos.index', compact('memos'));
     }
+
+    /**
+     * Handle memo deletion.
+     */
+    public function destroy(Memo $memo)
+    {
+        if ($memo->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $memo->delete();
+
+        return redirect()->route('memos.index');
+    }
 }

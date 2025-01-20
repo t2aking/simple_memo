@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/memos', [MemoController::class, 'store'])->name('memos.store');
     Route::get('/memos/{memo}/edit', [MemoController::class, 'edit'])->name('memos.edit');
     Route::put('/memos/{memo}', [MemoController::class, 'update'])->name('memos.update');
+    Route::delete('/memos/{memo}', [MemoController::class, 'destroy'])->name('memos.destroy'); // P55ee
 });
 
 require __DIR__.'/auth.php';
