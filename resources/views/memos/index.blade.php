@@ -29,6 +29,7 @@
                                     <td class="border px-4 py-2">{{ Str::limit($memo->content, 10, '...') }}</td>
                                     <td class="border px-4 py-2">
                                         <a href="{{ route('memos.edit', $memo->id) }}" class="text-blue-500">{{ __('Edit') }}</a>
+                                        <button class="text-red-500 ml-4" onclick="confirmDelete({{ $memo->id }})">{{ __('Delete') }}</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -38,4 +39,35 @@
             </div>
         </div>
     </div>
+
+    <x-modal name="confirm-delete-modal" :show="false" maxWidth="md">
+        <div class="p-6">
+            <h2 class="text-lg font-medium text-gray-900">
+                {{ __('Are you sure you want to delete this memo?') }}
+            </h2>
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    {{ __('No') }}
+                </x-secondary-button>
+
+                <form method="POST" action="" id="delete-form" class="ml-3">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-primary-button class="ml-3">
+                        {{ __('Yes') }}
+                    </x-primary-button>
+                </form>
+            </div>
+        </div>
+    </x-modal>
+
+    <script>
+        function confirmDelete(memoId) {
+            const form = document.getElementById('delete-form');
+            form.action = `/memos/${memoId}`;
+            window.dispatchEvent(new CustomEvent('open-modal', { detail: 'confirm-delete-modal' }));
+        }
+    </script>
 </x-app-layout>
